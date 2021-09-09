@@ -1,0 +1,110 @@
+\lecture{1}{2021-09-08}{}
+
+\begin{prob}[Putnam 2018, B3]
+Find all positive integers $n < 10^{100}$ for which simultaneously $n$ divides $2^n$, $n-1$ divides $2^n - 1$, and $n-2$ divides $2^n - 2$.
+\end{prob}
+
+\begin{sol}
+	Let's enumerate the conditions:
+	\begin{enumerate}
+		\item[(1)] \(n \mid 2^n\).
+		\item[(2)] \(n - 1 \mid 2^n - 1\).
+		\item[(3)] \(n - 2 \mid 2^n - 2\).
+	\end{enumerate}
+
+	Condition (1) is equivalent to \(n\) being a power of \(2\). Let's write \(n = 2^k\). Then, conditions (2) and (3) are equivalent to:
+	\begin{enumerate}
+		\item[(2)] \(2^k - 1 \mid 2^{2^k} - 1\).
+		\item[(3)] \(2^{k-1} - 1 \mid 2^{2^k - 1} - 1\).
+	\end{enumerate}
+
+	\begin{lem}
+		Let \(m, i\) be positive integers. Then,
+		\[m \mid i \iff 2^m - 1 \mid 2^i - 1.\]
+	\end{lem}
+	\begin{proof}
+	Since \(2^m \equiv 1 \pmod{2^m - 1}\), we conclude that if \(i \equiv j \pmod{m}\), then \(2^i - 1 \equiv 2^j - 1 \pmod{2^m - 1}\).
+	Futhermore, the integers \(2^0 - 1, 2^1 - 1, \dots, 2^{m-1} - 1\) are distinct integers between \(0\) and \(2^m - 2\), so they are in distict residue classes modulo  \(2^m - 1\). Therefore, \[
+		i \equiv j \pmod{m} \iff 2^i - 1 \equiv 2^j - 1 \pmod{2^m - 1},
+	\]
+	and in particular, the result follows from applying \(j = 0\).
+	\end{proof}
+
+	Applying the Lemma, conditions (2) and (3) are equivalent to:
+	\begin{enumerate}
+		\item[(2)] \(k \mid 2^k\).
+		\item[(3)] \(k - 1 \mid 2^k - 1\).
+	\end{enumerate}
+
+	These are the same conditions as (1) and (2) for \(n\)! (2) implies that \(k = 2^p\), and (3) implies that
+	\begin{enumerate}
+		\item[(3)] \(p \mid 2^p\),
+	\end{enumerate}
+	thus \(p\) is a power of \(2\).
+
+	Now, we just need to use the ``size'' condition.  \(2^{2^p} = 2^k = n < 10^{100} < 2^{334} < 2^{2^{9}}\), thus \(p < 9\), i.e.,  \(p = 1, 2, 4, 8\) are the possible values of \(p\). The  possible values of \(n\) are \(2^2, 2^{2^2}, 2^{2^4}, 2^{2^8}\).
+\end{sol}
+
+\begin{com}
+	Equivalently as probing the Lemma as states, we could have argued that the order of \(2\) modulo \(2^m - 1\) is \(m\). In Algebra 1, one learns the definition of order for an element of any group,  which is the smallest number of times you have to repeat the operation (in this case, multiplication) in a given element (in this case, \(2\)) to get the identity. It is an important concept in Elementary Number Theory, and later in Algebra. You can find more about order in Number Theory in \href{https://web.evanchen.cc/handouts/ORPR/ORPR.pdf}{Orders Modulo a Prime}, by Evan Chen.
+\end{com}
+
+\newpage
+\begin{prob}[Putnam 2010, A1]
+Given a positive integer $n,$ what is the largest $k$ such that the numbers $1,2,\dots,n$ can be put into $k$ boxes so that the sum of the numbers in each box is the same?
+\end{prob}
+
+\begin{sol}
+	We claim that the answer is \(n/2\), if \(n\) is even, and \((n+1)/2\), if \(n\) is odd.
+
+	Note that there cannot be two boxes with only one number, since all the numbers are distincts. Therefore, if a proper configuration uses \(k\) boxes, \(k - 1\) of those boxes have at least \(2\) elements. Thus, \[
+		n \leq 1 + 2(k-1),
+	\]
+	or equivalently, \[
+		k \leq (n + 1)/2.
+	\]
+
+	If \(n\) is even, a proper configuration with \(n/2\) boxes is \[
+		\{\{n, 1\}, \{n - 1, 2\}, \dots, \{n/2 + 1, n/2\}\}
+	\]
+
+	If \(n\) is odd, a proper configuration with \((n+1)/2\) boxes is \[
+		\{\{n\}, \{n-1, 1\}, \{n - 2, 2\}, \dots, \{(n+1)/2, (n-1)/2\}\}
+	\]
+	
+\end{sol}
+
+\newpage
+\begin{prob}[Putnam 2013, A1]
+Recall that a regular icosahedron is a convex polyhedron having 12 vertices and 20 faces; the faces are congruent equilateral triangles. On each face of a regular icosahedron is written a nonnegative integer such that the sum of all $20$ integers is $39.$ Show that there are two faces that share a vertex and have the same integer written on them.
+\end{prob}
+
+\begin{sol}
+	Suppose, by contradiction, that no two faces that share a vertex have the same number. 
+
+	Suppose \(5\) faces have the same number. Then, there are \(15\) pairs of face and vertex such that the vertex is in such face and the face has such number. Therefore, by the pidgeonhole principle, since there are only \(12\) vertices, there exists a vertex with two faces with such number, a contradiction. Therefore, each number appears at most \(4\) times.
+
+	Therefore, the four smallest numbers are \(\leq 0\);
+	without those, the four new smallest numbers are \(\leq 1\);
+	without those, the four new smallest numbers are \(\leq 2\);
+	without those, the four new smallest numbers are \(\leq 3\);
+	and the four remaining numbers are \(\leq 4\). Thus, \[
+		39 = \text{total sum} \geq 4(0 + 1 + 2 + 3 + 4) = 40,
+	\]
+	a contradiction.
+\end{sol}
+
+\newpage
+\begin{prob}[Putnam 2013, B1]
+For positive integers $n,$ let the numbers $c(n)$ be determined by the rules $c(1)=1,c(2n)=c(n),$ and $c(2n+1)=(-1)^nc(n).$ Find the value of \[\sum_{n=1}^{2013}c(n)c(n+2).\]	
+\end{prob}
+
+\begin{sol}
+	\begin{align*}
+		\sum_{n=1}^{2013} c(n)c(n+2) &= \sum_{k=1}^{1006}c(2k)c(2k+2) + \sum_{k=0}^{1006}c(2k+1)c(2k+3) \\
+									 &= \sum_{k=1}^{1006}c(k)c(k+1) + \left( c(1)c(3) + \sum_{k=1}^{1006}(-1)^{k}c(k)(-1)^{k+1}c(k+1)\right) \\ 
+									 &= \sum_{k=1}^{1006}c(k)c(k+1) + c(1)c(3) - \sum_{k=1}^{1006}c(k)c(k+1) \\ 
+									 &= -c(1)c(3)\\
+									 &= 1.
+	\end{align*}
+\end{sol}

@@ -1,0 +1,42 @@
+\usepackage[english]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[symbol]{footmisc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{lmodern}
+\usepackage[colorlinks]{hyperref}
+\usepackage{amsmath,amssymb,amsfonts,dsfont}
+\usepackage{mathtools}
+\usepackage[only, mapsfrom]{stmaryrd}
+\usepackage[inline]{enumitem}
+\setlist{label = \textbf{\roman*.}}
+\usepackage{todonotes}
+
+\usepackage{amsthm}
+%\usepackage{tcolorbox}
+%\tcbuselibrary{many}
+
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[chapter]
+\newtheorem*{sol}{Solution}
+\newtheorem*{lem}{Lemma}
+
+\newtheorem*{com}{Comments}
+
+\newcommand{\lecture}[3]{
+	\newpage
+	\chapter{Meeting Notes from #2}
+	%\section{#3 (#2)}
+	%\todo[bordercolor = gray!30!white, backgroundcolor = gray!30!white, noline]{\scalebox{.65}{#2}}
+}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\newcommand{\correct}[2]{\textcolor{Red!90!black}{\st{#1}} \textcolor{ForestGreen}{#2}}
+\newcommand{\signexpl}[3]{\underset{\substack{\uparrow\\\mathrlap{\text{\hspace{#3}#2}}}}{#1}}
