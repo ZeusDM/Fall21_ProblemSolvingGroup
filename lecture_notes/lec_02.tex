@@ -1,0 +1,77 @@
+\lecture{2}{2021-09-15}{}
+
+\begin{prob}[Putnam 1999, A1]
+Find polynomials $f(x)$, $g(x)$, and $h(x)$, if they exist, such that for all $x$,
+\[
+|f(x)|-|g(x)|+h(x) = \begin{cases} -1 & \mbox{if $x<-1$} \\
+                     3x+2 & \mbox{if $-1 \leq x \leq 0$} \\
+                     -2x+2 & \mbox{if $x>0$.}
+                     \end{cases}
+\]
+\end{prob}
+
+\begin{sol}
+	The polynomials
+	\begin{gather*}
+		f(x) = \frac{1}{2} ((3x + 2) - (-1)) = \frac{3}{2}x + \frac{3}{2},\\
+		g(x) = \frac{1}{2} ((-2x+2) - (3x+2)) = \frac{5}{2}x, \\
+		h(x) = -x + \frac{3}{2}
+	\end{gather*}
+	satisfy the requirement.
+\end{sol}
+
+\newpage
+\begin{prob}[Putnam 1999, B2]
+	Let $P(x)$ be a polynomial of degree $n$ such that $P(x)=Q(x)P''(x)$, where $Q(x)$ is a quadratic polynomial and $P''(x)$ is the second derivative of $P(x)$.
+	Show that if $P(x)$ has at least two distinct roots then it must have $n$ distinct roots.	
+\end{prob}
+
+\begin{sol}
+	If \(n \leq 2\), then it always holds that, if \(P(x)\) has at least to distinct roots, then it has at least \(n\) distinct roots. Suppose that \(n > 3\).
+
+	We'll equivalently prove that, if \(P(x)\) has a root of multiplicity at least \(2\), then it has a root with multiplicity \(n\).
+
+	In other words, suppose \((x - \alpha)^2 \mid P(x)\). We will show that \((x - \alpha)^n \mid P(x)\).
+
+	Throughout the solution, we'll use the following theorems.
+	\begin{lem}
+		If \((x - \alpha)^k \mid P(x)\), then \((x-\alpha)^{k-1} \mid P'(x)\).
+	\end{lem}
+	\begin{lem}
+		If \((x-\alpha)\) divides \(P(x)\), \(P'(x)\),  \(\dots\), \(P^{(k-1)}(x)\), then \((x-\alpha)^k \mid P(x)\).
+	\end{lem}
+
+	First, if we compare the leading coefficient in the expression \[
+		P(x) = Q(x)P''(x),
+	\]
+	then we conclude the leading coefficient of \(Q(x)\) is  \(\frac{1}{n(n-1)}\).
+
+	Suppose  \(Q(x) \neq \frac{1}{n(n-1)}(x-\alpha)^2\). Then, \((x-\alpha)^2 \mid P(x) = Q(x) P''(x) \implies (x - \alpha) \mid P''(x)\), since the two factors \(x - \alpha\) cannot be both in \(Q(x)\). By the first lemma, \((x - \alpha) \mid P'(x)\). By the second lemma, \((x - \alpha)^3 \mid P(x)\).
+
+	We'll prove, using induction, that \((x-\alpha)^k \mid P(x)\) for any positive integer \(k\).
+
+	Suppose \((x-\alpha)^k \mid P(x) = Q(x) P''(x) \implies (x - \alpha)^{k-1} \mid P''(x)\), since the two factors \(x - \alpha\) cannot be both in \(Q(x)\). By the first lemma, \((x - \alpha)^{k-1} \mid P''(x) \implies (x - \alpha)^{k-2} \mid P^{(3)}(x) \implies \cdots \implies (x - \alpha) \mid P^{(k)}(x)\). By the second lemma, \((x - \alpha)^{k+1} \mid P(x)\); which finishes the induction.
+
+	This implies that \(P(x)\) has a root with multiplicity \(n+1\), which contradicts the fact that the degree of \(P(x)\) is \(n\).
+	Therefore, \(Q(x) = \frac{1}{n(n-1)} (x-\alpha)^2\).
+
+	Let's differentiate the original equation twice:
+	\begin{gather*}
+		P'(x) = Q(x)P^{(3)}(x) + Q'(x)P''(x)\\
+		P''(x) = Q(x)P^{(4)}(x) + 2Q'(x)P^{(3)}(x) + Q''(x)P''(x)
+	\end{gather*}
+	Notice that \((x-\alpha)\) divides \(Q(x)P^{(4)}(x) + 2Q'(x)P^{(3)}(x)\), therefore, it also must divide \(P''(x)(1 - Q''(x)) = P''(x)\left(1 - \frac{1}{\binom{n}{2}}\right)\). Since \(1 - \frac{1}{\binom{n}{2}} \neq 0\), we conclude \((x-\alpha)\) divides \(P''(x)\).
+
+	In general, using that \(Q^{(3)}(x) = 0\), we have \[
+		P^{(k)} = Q(x)P^{(k+2)}(x) + kQ'(x)P^{(k+1)}(x) + \binom{k}{2}Q''(x)P^{(k)}(x).
+	\]
+
+	So we similarly conclude \((x-\alpha)\) divides \(\left(1 - \frac{\binom{k}{2}}{\binom{n}{2}}\right)P^{(k)}\), and, as long as \(k \neq n\), we conclude that \((x-\alpha)\) divides \(P^{(k)}(x)\). Thus, by the second lemma, \((x-\alpha)^n \mid P(x)\), as desired.
+\end{sol}
+
+\newpage
+\begin{prob}[Putnam 2014, A1]
+	Prove that every nonzero coefficient of the Taylor series of \[
+		(1 - x + x^2)e^x
+	\] about $x=0$ is a rational number whose numerator (in lowest terms) is either $1$ or a prime number.
+\end{prob}
