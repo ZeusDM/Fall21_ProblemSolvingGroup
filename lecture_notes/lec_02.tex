@@ -75,3 +75,20 @@ Find polynomials $f(x)$, $g(x)$, and $h(x)$, if they exist, such that for all $x
 		(1 - x + x^2)e^x
 	\] about $x=0$ is a rational number whose numerator (in lowest terms) is either $1$ or a prime number.
 \end{prob}
+
+\begin{sol}
+	Since \[
+		e^x = \sum_{n=0}^\infty \frac{x^n}{n!},
+	\]
+	we conclude that
+	\begin{align*}
+		(1 - x - x^2)e^x &= \sum_{n=0}^\infty \frac{x^n}{n!} - \sum_{n=0}^\infty \frac{x^{n+1}}{n!} +  \sum_{n=0}^\infty \frac{x^{n+2}}{n!} \\
+		&= \sum_{n=0}^\infty \frac{x^n}{n!} - \sum_{n=1}^\infty \frac{x^{n}}{(n-1)!} +  \sum_{n=2}^\infty \frac{x^{n}}{(n-2)!} \\
+		&= 1 + \sum_{n=2}^\infty x^n\left( \frac{1}{n!} - \frac{1}{(n-1)!} + \frac{1}{(n-2)!} \right) \\
+		&= 1 + \sum_{n=2}^\infty x^n \frac{1 - n + n(n-1)}{n!} \\
+		&= 1 + \sum_{n=2}^\infty x^n \frac{(n-1)^2}{n!}\\
+		&= 1 + \sum_{n=2}^\infty x^n \frac{(n-1)}{(n-2)! \cdot n}
+	\end{align*}
+
+	If \(n - 1\) is prime, we're good. If \(n - 1 = 4\), then \(\frac{4}{3!\cdot5} = \frac{2}{15}\), so we're good. If \(n - 1 = p^2\), with \(p > 2\), then \(n-1 = p^2 \mid p \cdot (2p) \mid (n-2)!\), so the numerator of the fraction is \(1\). Otherwise, we can find \(n - 1 > a > b > 1\) such that  \(n - 1 = ab\), therefore  \(n-1 = ab \mid (n-2)!\) so the numeratior is \(1\).
+\end{sol}
