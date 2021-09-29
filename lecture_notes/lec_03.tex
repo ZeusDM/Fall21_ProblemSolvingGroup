@@ -1,0 +1,51 @@
+\lecture{3}{2021-09-22}{}
+
+\begin{prob}
+	Can three points with integer coornidates in the plane be vertices of an equilateral triangle? What about in three dimentions?
+\end{prob}
+
+\begin{sol}
+	Let \(ABC\) be an equilateral triangle in the plane so that \(A = (a_x, a_y) \in \mathbb{Z}^2\), \(B = (b_x, b_y) \in \mathbb{Z}^2\), and \(C = (c_x, c_y)\), with \(A\), \(B\), and \(C\) being distinct. Without loss of generality, suppose \(A\), \(B\), \(C\) are in counterclockwise order. Then,
+	\begin{align*}
+		(C - A) &=
+		\begin{pmatrix}
+			\cos(\pi/3) & -\sin(\pi/3) \\
+			\sin(\pi/3) & \cos(\pi/3) 
+		\end{pmatrix}
+		(B - A) \\
+		&=
+		\begin{pmatrix}
+			1/2 & -\sqrt{3}/2 \\
+			\sqrt{3}{2} & 1/2 
+		\end{pmatrix}
+		\begin{pmatrix}
+			b_x - a_x \\
+			b_y - a_y
+		\end{pmatrix} \\
+		&=
+		\begin{pmatrix}
+			1/2(b_x - a_x) - \sqrt{3}/{2}(b_y-a_y) \\
+			\sqrt{3}/2(b_x - a_x) + 1/2(b_y-a_y) \\
+		\end{pmatrix}.
+	\end{align*}
+
+	Finally, since \(A \neq B\), \(b_x - a_x \neq 0\) or \(b_y - b_x \neq 0\), which implies \(C - A \notin \mathbb{Q}^2 \implies C \notin \mathbb{Q}^2 \implies C \notin \mathbb{Z}^2\). Therefore, there is no equilateral triangle in the plane with vertices with integer coordinates.
+
+	In three dimensions, the points \((1, 0, 0)\), \((0, 1, 0)\), and \((0, 0, 1)\) form an equilateral triangle.
+\end{sol}
+
+\begin{sol}[using areas]
+	Let's use the same notation as above, and suppose \(A, B, C \in \mathbb{Z}^2\).
+	On one hand, using the same notation as above, the area of the triangle \(ABC\) is the absolute value of the determinant of \[
+		\frac{1}{2}\begin{pmatrix}
+			a_x&a_y&1 \\
+			b_x&b_y&1 \\
+			c_x&c_y&1
+		\end{pmatrix},
+	\]
+	which is a rational number.
+	On the other hand, the area of an equilateral triangle is \[
+		\frac{\ell^2 \sqrt{3}}{2},
+	\]
+	where \(\ell\) is the length of the side. Pythagoras' theorem implies that \(\ell^2 = |AB|^2\) is an integer, so the area of \(ABC\) is an irrational number; a contradiction. Thus, no such triangle exists.
+\end{sol}
