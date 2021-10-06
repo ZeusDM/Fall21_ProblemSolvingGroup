@@ -1,0 +1,65 @@
+\documentclass[20pt]{beamer}
+\geometry{papersize={8.5in,11in}, top = 0in, bottom = 0in, right = .5in, left = .5in}
+
+\setbeamertemplate{navigation symbols}{}
+%\usefonttheme{serif}
+
+%\setbeamertemplate{background}{\tikz[overlay,remember picture]\node[opacity=.25]at (current page.center){\includegraphics[width=10in]{background_light}};}
+\setbeamertemplate{background}{\tikz[overlay,remember picture]\node[opacity=1]at (current page.center){\includegraphics[width=10in]{background_dark}};}
+
+\usepackage{tikz}
+
+\usepackage{graphicx}
+
+\newcommand\poster[2]{
+\begin{frame}
+	\begin{center}
+		{\Huge \textbf{#1}}
+
+		\vfill
+
+		{\LARGE #2}
+
+		\vfill
+
+		Join the \textbf{Problem Solving Group.} \\ 
+		We work together to do math, real math, for fun;\\
+		with pizza, cake, or cookies. \\[1em]
+
+		Scan below to join our Discord server or contact \texttt{gdantasemo@haverford.edu} to get more info.
+
+		\vspace{.3in}
+
+		\includegraphics[width=1.5in]{qr}\hspace{1in}\includegraphics[width = 1.5in]{psg_logo}
+	\end{center}
+\end{frame}
+}
+
+\begin{document}
+\color{white}
+\begin{frame}
+	\begin{center}
+		\vspace{.6in}
+
+		{\LARGE The} \\[4mm]
+		{\Huge \textbf{Math Problem}} \\[4mm]
+		{\Huge \textbf{Solving Group}} \\[4mm]
+		{\LARGE is in session} \\[4mm]
+		{\large from 6 pm to 7:30 pm.}
+
+		
+		\vfill
+
+		{\Large Feel free to join us \underline{\textbf{right now.}}} \\ 
+		We work together to do math, real math, for fun;\\
+		with pizza, cake, or cookies. \\[1em]
+
+		%Scan below to join our Discord server or contact \texttt{gdantasemo@haverford.edu} to get more info.
+
+		\vspace{.3in}
+
+		%\includegraphics[width=1.5in]{qr}\hspace{1in}
+		\includegraphics[width = 1.5in]{psg_logo}
+	\end{center}
+\end{frame}
+\end{document}
