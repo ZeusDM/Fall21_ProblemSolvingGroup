@@ -12,15 +12,68 @@
 \usepackage{todonotes}
 
 \usepackage{amsthm}
-%\usepackage{tcolorbox}
-%\tcbuselibrary{many}
+\usepackage{tcolorbox}
+\tcbuselibrary{many}
 
-\theoremstyle{definition}
-\newtheorem{prob}{Problem}[chapter]
-\newtheorem*{sol}{Solution}
-\newtheorem*{lem}{Lemma}
+\newtcbtheorem[auto counter, number within=chapter]{prob}{Problem}{
+	theorem style=plain apart,
+	sharp corners,
+	enhanced jigsaw,
+	breakable,
+	colback=Orange!10,
+	colbacktitle=Orange!70!black,
+	coltitle=White,
+	boxrule=0pt,
+	fonttitle=\sffamily\bfseries,
+	description font=\normalfont\sffamily,
+	parbox=false,
+}{prob}
 
-\newtheorem*{com}{Comments}
+\newtcbtheorem[auto counter, number within=tcb@cnt@prob,
+		number freestyle={\noexpand\Alph{\tcbcounter}}
+	]{sol}{Solution}{
+	theorem style=plain,
+	sharp corners,
+	enhanced jigsaw,
+	breakable,
+	colback=Gray!10,
+	coltitle=Black,
+	boxrule=0pt,
+	fonttitle=\sffamily\bfseries,
+	description font=\normalfont\sffamily,
+	parbox=false,
+}{sol}
+
+\newtcbtheorem[auto counter, use counter from=sol,
+		number freestyle={\noexpand\Alph{\tcbcounter}}
+	]{sk}{Sketch}{
+	theorem style=plain,
+	sharp corners,
+	enhanced jigsaw,
+	breakable,
+	colback=Gray!10,
+	coltitle=Black,
+	boxrule=0pt,
+	fonttitle=\sffamily\bfseries,
+	description font=\normalfont\sffamily,
+	parbox=false,
+}{sk}
+
+\newtcbtheorem[auto counter, number within=tcb@cnt@prob,
+		number freestyle={\noexpand\arabic{\tcbcounter}}
+	]{lem}{Lemma}{
+	theorem style=plain apart,
+	sharp corners,
+	enhanced jigsaw,
+	breakable,
+	colback=NavyBlue!10,
+	colbacktitle=NavyBlue!70!black,
+	coltitle=White,
+	boxrule=0pt,
+	fonttitle=\sffamily\bfseries,
+	description font=\normalfont\sffamily,
+	parbox=false,
+}{lem}
 
 \newcommand{\lecture}[3]{
 	\newpage

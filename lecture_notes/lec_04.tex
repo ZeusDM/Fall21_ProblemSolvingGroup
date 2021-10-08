@@ -1,10 +1,10 @@
 \lecture{4}{2021-09-29}{}
 
-\begin{prob}
+\begin{prob}{IMO 1975, 4}{}
 	When \(4444^{4444}\) is written in decimal notation, the sum of its digits is \(A\).  Let \(B\) be the sum of the digits of \(A\). Find the sum of the digits of \(B\).
 \end{prob}
 
-\begin{sol}
+\begin{sol}{}{}
 	Let \(C\) be the sum of the digits of \(B\).
 
 	First, we will investigate the size of the numbers.
@@ -17,13 +17,26 @@
 	Therefore, \(7 \equiv 4444^{4444} \equiv A \equiv B \equiv C \pmod{9}\). Since \(0 < C \leq 11\), \(C\) must be \(7\).
 \end{sol}
 
-\begin{prob}%[Putnam 2003, B3]
+\begin{prob}{Putnam 2003, B3}{}
 	Show that for each positive integer $n$, \[
 		n! = \prod_{i=1}^n  \mathrm{lcm}\{1, 2, \dots, \lfloor n/i\rfloor\} .
 	\] (Here $\mathrm{lcm}$ denotes the least common multiple, and
 	$\lfloor x \rfloor$ denotes the greatest integer $\leq x$.)
 \end{prob}
 
-\begin{sol}
-	\textcolor{red}{Solution to be written.}
+\begin{sol}{}{}
+	Let \(\nu_p(n)\) be the largest \(\alpha\) so that \(p^\alpha \mid n\).\footnote{See \href{https://en.wikipedia.org/wiki/P-adic_order}{\(p\)-adic order on Wikipedia}.}
+	In order to show that LHS equals RHS, it suffices to show that \(\nu_p(\mathrm{LHS}) = \nu_p(\mathrm{RHS})\) for all primes \(p\).
+
+	We know that\footnote{This is known as \href{https://en.wikipedia.org/wiki/Legendre's_formula}{Legendre's formula}.}
+	\begin{align*}
+		\nu_p\left(n!\right) &= \sum_{i=1}^\infty \left\lfloor\frac{n}{p^i}\right\rfloor\\
+		&= \sum_{i=1}^n \left\lfloor\frac{n}{p^i}\right\rfloor.
+	\end{align*}
+
+	We also know that \[
+		\nu_p\left(\prod_{i=1}^n \mathrm{lcm}\{1, 2, \dots, \} \right)
+	\]
+
+
 \end{sol}

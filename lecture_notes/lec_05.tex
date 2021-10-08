@@ -1,0 +1,81 @@
+\lecture{5}{2021-10-06}{}
+
+\begin{prob}{}{}
+	Prove that \[ \sin\left(\frac{\pi}{11}\right) \sin\left(\frac{2\pi}{11}\right) \cdots \sin\left(\frac{10\pi}{11}\right) = \frac{11}{2^{10}},\]
+	or more generally, prove that \[ \sin\left(\frac{\pi}{n}\right) \sin\left(\frac{2\pi}{n}\right) \cdots \sin\left(\frac{(n-1)\pi}{n}\right) = \frac{n}{2^{n-1}}.\]
+\end{prob}
+
+\begin{sol}{}{}
+	Recall the formula \[
+		\sin(\theta) = \frac{1}{2i}(e^{i\theta} - e^{-i\theta}).
+	\]
+
+	Therefore,
+	\begin{align*}
+		\prod_{k=1}^{n-1} \sin\left(\frac{k\pi}{n}\right)
+		&= \prod_{k=1}^{n-1} \left( \frac{1}{2i} \left( e^{ki\pi/n} - e^{-ki\pi/n} \right) \right) \\
+		&= \frac{1}{(2i)^{n-1}} \left( \prod_{k=1}^{n-1} e^{ki\pi/n} \right) \left( \prod_{k=1}^{n-1} (1 - e^{-2ki\pi/n}) \right).
+	\end{align*}
+
+	The first product evaluates to \(\prod_{k=1}^{n-1} e^{ki\pi/n} = e^{\sum_{k=1}^{n-1}ki\pi/n} = e^{(n-1)i\pi/2} = i^{n-1}\).
+
+	To calculate the second product, notice each of the \(n-1\) distinct terms \(e^{-2ki\pi/n}\) is a root of the polynomial \(1 + z + z^2 + \dots + z^{n-1} = \frac{z^n - 1}{z - 1}\). Therefore, we have that \[
+		\prod_{n=1}^{n-1} (z - e^{-2ki\pi/n}) = 1 + z + z^2 + \dots + z^{n-1}.
+	\] By plugging \(z \to 1\) above, we have that \(\prod_{n=1}^{n-1} (1 - e^{-2ki\pi/n}) = n\).
+
+	Finally, we conclude that
+	\begin{align*}
+		\prod_{k=1}^{n-1} \sin\left(\frac{k\pi}{n}\right)
+		&= \frac{1}{(2i)^{n-1}} \left( \prod_{k=1}^{n-1} e^{ki\pi/n} \right) \left( \prod_{k=1}^{n-1} (1 - e^{-2ki\pi/n}) \right) \\
+		&= \frac{1}{(2i)^{n-1}} i^{n-1} n \\
+		&= \frac{n}{2^{n-1}}.
+	\end{align*}
+
+\end{sol}
+
+\begin{prob}{Putnam 2004, A3}{}
+	Define a sequence \((u_n)_{n=0}^\infty\) by  \(u_0 = u_1 = u_2 = 1\) and thereafter by the condition that  \[
+		\det
+		\begin{pmatrix}
+			u_n & u_{n+1} \\
+			u_{n+2} & u_{n+3}
+		\end{pmatrix} = n!
+	\] for all \(n \geq 0\). Show that \(u_n\) is an integer for all \(n\). 
+	(By convention, \(0! = 1\).)
+\end{prob}
+
+\begin{sk}{}{}
+	One can prove, using induction, that \[
+		u_{2k} = 1 \cdot 3 \cdot 5 \cdot \cdots \cdot (2k-1) = \frac{2k!}{2^k k!}
+	\] and \[
+	u_{2k+1} = 2 \cdot 4 \cdot 6 \cdot \cdots \cdot 2k = 2^k k!
+	\]
+	which solves the problem.
+\end{sk}
+
+\begin{prob}{Putnam 2005, A1}{}
+	Show that every positive integer is a sum of one or more numbers of the form \(2^r3^s\), where \(r\) and \(s\) are nonnegative integers and no summand divides another. (For example, \(23 = 9 + 8 + 6\).)
+\end{prob}
+
+\begin{sol}{}{}
+	If \(N = 0\), then we can write \(0\) as the empty sum.
+
+	Supoose \(N \geq 1\), and for all \(0 \leq  n < N\), \(n\) can be written as asked.
+
+	If \(N\) is even, then \(0 \leq \frac{N}{2} < N\), so we can write \(\frac{N}{2}\) as \[
+		\frac{N}{2} = 2^{s_1}3^{r_1} + \cdots + 2^{s_k}{r_k}
+	\] where no summand divides another, and consequently, \[
+		N = 2^{s_1 + 1}s^{r_1} + \cdots + 2^{s_k+1}3^{r_k}
+	\] where no summand divides another.
+
+	If \(N\) is odd, let \(\alpha\) be the largest integer so that \(3^\alpha \leq N\).
+	Therefore, \(N < 3^{\alpha+1}\), and consequently, \(0 \leq \frac{N - 3^\alpha}{2} < 3^\alpha \leq N\). Thus, we can write \(\frac{N - 3^\alpha}{2}\) as  \[
+		\frac{N - 3^\alpha}{2} =  2^{s_1}3^{r_1} + \cdots + 2^{s_k}3^{r_k}
+	\] where no summand divides another. Since the number above is smaller than \(3^\alpha\), all \(r_i\) are smaller than \(\alpha\).
+	Consequently, we can write \[
+		N = 3^\alpha + 2^{s_1 + 1}3^{r_1} + \cdots 2^{s_k + 1}{r_k}
+	\] where no summand divides another (\(3^\alpha\) does not divide \(2^{s_i + 1}3^{r_i}\) since \(r_i < \alpha\); and \(2^{s_i + 1}3^{r_i}\) does not divide \(3^\alpha\) since \(2\) does not divide \(3^\alpha\)).
+
+	Therefore, by induction all numbers can be written in such form.
+
+\end{sol}

@@ -1,6 +1,6 @@
 \lecture{2}{2021-09-15}{}
 
-\begin{prob}[Putnam 1999, A1]
+\begin{prob}{Putnam 1999, A1}{}
 Find polynomials $f(x)$, $g(x)$, and $h(x)$, if they exist, such that for all $x$,
 \[
 |f(x)|-|g(x)|+h(x) = \begin{cases} -1 & \mbox{if $x<-1$} \\
@@ -10,7 +10,7 @@ Find polynomials $f(x)$, $g(x)$, and $h(x)$, if they exist, such that for all $x
 \]
 \end{prob}
 
-\begin{sol}
+\begin{sol}{}{}
 	The polynomials
 	\begin{gather*}
 		f(x) = \frac{1}{2} ((3x + 2) - (-1)) = \frac{3}{2}x + \frac{3}{2},\\
@@ -20,13 +20,12 @@ Find polynomials $f(x)$, $g(x)$, and $h(x)$, if they exist, such that for all $x
 	satisfy the requirement.
 \end{sol}
 
-\newpage
-\begin{prob}[Putnam 1999, B2]
+\begin{prob}{Putnam 1999, B2}{}
 	Let $P(x)$ be a polynomial of degree $n$ such that $P(x)=Q(x)P''(x)$, where $Q(x)$ is a quadratic polynomial and $P''(x)$ is the second derivative of $P(x)$.
 	Show that if $P(x)$ has at least two distinct roots then it must have $n$ distinct roots.	
 \end{prob}
 
-\begin{sol}
+\begin{sol}{}{}
 	If \(n \leq 2\), then it always holds that, if \(P(x)\) has at least to distinct roots, then it has at least \(n\) distinct roots. Suppose that \(n > 3\).
 
 	We'll equivalently prove that, if \(P(x)\) has a root of multiplicity at least \(2\), then it has a root with multiplicity \(n\).
@@ -34,10 +33,10 @@ Find polynomials $f(x)$, $g(x)$, and $h(x)$, if they exist, such that for all $x
 	In other words, suppose \((x - \alpha)^2 \mid P(x)\). We will show that \((x - \alpha)^n \mid P(x)\).
 
 	Throughout the solution, we'll use the following theorems.
-	\begin{lem}
+	\begin{lem}{}{}
 		If \((x - \alpha)^k \mid P(x)\), then \((x-\alpha)^{k-1} \mid P'(x)\).
 	\end{lem}
-	\begin{lem}
+	\begin{lem}{}{}
 		If \((x-\alpha)\) divides \(P(x)\), \(P'(x)\),  \(\dots\), \(P^{(k-1)}(x)\), then \((x-\alpha)^k \mid P(x)\).
 	\end{lem}
 
@@ -69,14 +68,13 @@ Find polynomials $f(x)$, $g(x)$, and $h(x)$, if they exist, such that for all $x
 	So we similarly conclude \((x-\alpha)\) divides \(\left(1 - \frac{\binom{k}{2}}{\binom{n}{2}}\right)P^{(k)}\), and, as long as \(k \neq n\), we conclude that \((x-\alpha)\) divides \(P^{(k)}(x)\). Thus, by the second lemma, \((x-\alpha)^n \mid P(x)\), as desired.
 \end{sol}
 
-\newpage
-\begin{prob}[Putnam 2014, A1]
+\begin{prob}{Putnam 2014, A1}{}
 	Prove that every nonzero coefficient of the Taylor series of \[
 		(1 - x + x^2)e^x
 	\] about $x=0$ is a rational number whose numerator (in lowest terms) is either $1$ or a prime number.
 \end{prob}
 
-\begin{sol}
+\begin{sol}{}{}
 	Since \[
 		e^x = \sum_{n=0}^\infty \frac{x^n}{n!},
 	\]
