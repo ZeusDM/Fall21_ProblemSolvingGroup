@@ -1,0 +1,38 @@
+\lecture{7}{2021-11-23}{}
+\begin{prob}{}{}
+	Find the $2000$\textsuperscript{th} digit in the square root of $N = 11\dots1$, where $N$ contains $1998$ digits, all of them $1$'s.
+\end{prob}
+
+\begin{sol}{}{}
+	The answer is \boxed{6.}
+	We can estimate \[
+		\sqrt{\frac{10^{1998} - 1}{9}} \approx \sqrt{\frac{10^{1998}}{9}} = \frac{10^{999}}{3}.
+	\]
+	How good is this estimate?
+	\begin{align*}
+		\left(\frac{10^{999}}{3} - \sqrt{\frac{10^{1998} - 1}{9}}\right)
+		\left(\frac{10^{999}}{3} + \sqrt{\frac{10^{1998} - 1}{9}}\right) &=
+		\frac{10^{1998}}{9} - \frac{10^{1998}-1}{9} \\
+		&= \frac{1}{9},
+	\end{align*}
+	thus, by using the estimative $\sqrt{\frac{10^{1998} - 1}{9}} \approx \frac{10^{999}}{3}$,
+	\begin{align*}
+		\frac{10^{999}}{3} - \sqrt{\frac{10^{1998} - 1}{9}} \approx \frac{1}{6 \cdot 10^{999}},
+	\end{align*}
+	which sadly implies that our estimative is not good enough to evaluate the \(2000\)\textsuperscript{th}. However, now we have a new estimative:
+	\[
+		\sqrt{\frac{10^{1998} - 1}{9}} \approx \frac{10^{999}}{3} - \frac{1}{6 \cdot 10^{999}}.
+	\]
+	Again, how good is this estimative?
+	\begin{align*}
+		\left(\sqrt{\tfrac{10^{1998} - 1}{9}} - \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right)\right)
+		\left(\sqrt{\tfrac{10^{1998} - 1}{9}} + \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right)\right)
+		&= 
+		\tfrac{10^{1998} - 1}{9} - \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right)^2 \\
+		&= \tfrac{1}{36 \cdot 10^{1998}},
+	\end{align*}
+	so we know that \[
+		\sqrt{\tfrac{10^{1998} - 1}{9}} - \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right) < \frac{1}{10^{1010}},
+	\]
+	which is good enough to imply that the \(2000\)\textsuperscript{th} digit of \(\sqrt{\tfrac{10^{1998} - 1}{9}}\) is equal to the \(2000\)\textsuperscript{th} digit of \(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\), which is \(6\).
+\end{sol}
