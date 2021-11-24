@@ -1,0 +1,94 @@
+\lecture{11}{2021-11-23}{}
+
+\begin{prob}{Putnam 2011, A3}{}
+        Find a real number $c$ and a positive number $L$ for which
+        \[\lim_{r\to\infty}\frac{r^c\int_0^{\pi/2}x^r\sin x\,dx}{\int_0^{\pi/2}x^r\cos x\,dx}=L.\]
+\end{prob}
+
+\begin{sol}{}{}
+	The answer is \(c = -1\) and \(L = 2/\pi\).
+	Taylor series implies that 
+	\begin{align*}
+		\sin x  &= \sum_{i=0}^\infty \frac{(-1)^i}{(2i+1)!} x^{2i+1} \\
+		\cos x  &= \sum_{i=0}^\infty \frac{(-1)^i}{(2i)!} x^{2i}
+	\end{align*}
+
+	Then, we have 
+	\begin{align*}
+		&\lim_{r\to \infty}
+		{r(\pi/2)^{-r-1} \int_0^{\pi/2} x^r \sin x\,dx} \\
+		=& \lim_{r\to \infty}
+		{\int_0^{\pi/2} \sum_{i=0}^\infty r(\pi/2)^{-r-1}\frac{(-1)^i}{(2i+1)!} x^{2i+1+r}\,dx} \\
+		=& \lim_{r\to \infty}
+		{\sum_{i=0}^\infty \int_0^{\pi/2} r(\pi/2)^{-r-1}\frac{(-1)^i}{(2i+1)!} x^{2i+1+r}\,dx} \\
+		=& \lim_{r\to \infty}
+		{\sum_{i=0}^\infty r(\pi/2)^{-r-1}\frac{(-1)^i}{(2i+2+r)(2i+1)!} \left(\pi/2\right)^{2i+2+r}} \\
+		=& \lim_{r\to \infty}
+		{\sum_{i=0}^\infty \frac{r}{2i+2+r}\frac{(-1)^i}{(2i+1)!} \left(\pi/2\right)^{2i+1}} \\
+		=& \sum_{i=0}^\infty \lim_{r\to \infty}
+		{\frac{r}{2i+2+r}\frac{(-1)^i}{(2i+1)!} \left(\pi/2\right)^{2i+1}} \\
+		=& \sum_{i=0}^\infty
+		{\frac{(-1)^i}{(2i+1)!} \left(\pi/2\right)^{2i+1}} \\
+		=& \sum_{i=0}^\infty
+		{\frac{(-1)^i}{(2i+1)!} \left(\pi/2\right)^{2i+1}} \\
+		=& \sin\left(\pi/2\right) = 1
+	\end{align*}
+
+	And we also have
+	\begin{align*}
+		&\lim_{r\to \infty}
+		r^2(\pi/2)^{-r-1} \int_0^{\pi/2} x^r \cos x\,dx\\
+		=& \lim_{r\to \infty}
+		\int_0^{\pi/2} \sum_{i=0}^\infty r^2(\pi/2)^{-r-1} \frac{(-1)^i}{(2i)!} x^{2i}\,dx \\
+		=& \lim_{r\to \infty}
+		\sum_{i=0}^\infty \int_0^{\pi/2} r^2(\pi/2)^{-r-1} \frac{(-1)^i}{(2i)!} x^{2i}\,dx \\
+		=& \lim_{r\to \infty}
+		\sum_{i=0}^\infty \frac{r^2}{2i+1+r}\frac{(-1)^i}{(2i)!} (\pi/2)^{2i} \\
+		=& \lim_{r\to \infty} \left(
+			\frac{r^2}{r+1} + \sum_{i=1}^\infty \frac{r^2}{2i+1+r}\frac{(-1)^i}{(2i)!} (\pi/2)^{2i}
+		\right) \\
+		=& \lim_{r\to \infty} \left(
+			\frac{r^2}{r+1} + \sum_{i=1}^\infty \frac{r^2}{(2i+1+r)(2i)}\frac{(-1)^i}{(2i-1)!} (\pi/2)^{2i}
+		\right) \\
+		=& \lim_{r\to \infty} \left(
+			\frac{r^2}{r+1} + \sum_{i=1}^\infty \frac{r}{r+1}\left(\frac{r}{2i} - \frac{r}{2i+1+r}\right)\frac{(-1)^i}{(2i-1)!} (\pi/2)^{2i}
+		\right) \\
+		=& \lim_{r\to \infty} \left(
+			\left(\sum_{i=0}^\infty \frac{r^2}{r+1}\frac{(-1)^i}{(2i)!} (\pi/2)^{2i}\right) - 
+			\left(\sum_{i=1}^\infty \frac{r^2}{(r+1)(2i+1+r)}\frac{(-1)^i}{(2i-1)!} (\pi/2)^{2i}\right)
+		\right) \\
+		=& \lim_{r\to \infty} \left(
+			\frac{r^2}{r+1}\left(\sum_{i=0}^\infty \frac{(-1)^i}{(2i)!} (\pi/2)^{2i}\right) - 
+			\left(\sum_{i=1}^\infty \frac{r^2}{(r+1)(2i+1+r)}\frac{(-1)^i}{(2i-1)!} (\pi/2)^{2i}\right)
+		\right) \\
+		=& \lim_{r\to \infty} \left(
+			\frac{r^2}{r+1}\cos(\pi/2) - 
+			\left(\sum_{i=1}^\infty \frac{r^2}{(r+1)(2i+1+r)}\frac{(-1)^i}{(2i-1)!} (\pi/2)^{2i}\right) 
+		\right) \\
+		=& \lim_{r\to \infty}
+		\sum_{i=1}^\infty \frac{r^2}{(r+1)(2i+1+r)}\frac{(-1)^{i+1}}{(2i-1)!} (\pi/2)^{2i} \\
+		=& \sum_{i=1}^\infty \lim_{r\to \infty} \frac{r^2}{(r+1)(2i+1+r)}\frac{(-1)^{i+1}}{(2i-1)!} (\pi/2)^{2i} \\
+		=& \sum_{i=1}^\infty \frac{(-1)^{i+1}}{(2i-1)!} (\pi/2)^{2i} \\
+		=& \sum_{i=0}^\infty \frac{(-1)^{i}}{(2i+1)!} (\pi/2)^{2i+2} \\
+		=& (\pi/2) \sum_{i=0}^\infty \frac{(-1)^{i}}{(2i+1)!} (\pi/2)^{2i+1} \\
+		=& (\pi/2)\sin(\pi/2) = \pi/2.
+	\end{align*}
+
+	Finally, this implies that
+	\begin{align*}
+		\lim_{r\to \infty}
+		\frac%
+		{r^{-1} \int_0^{\pi/2} x^r \sin x\,dx}%
+		{\int_0^{\pi/2} x^r \cos x\,dx}
+		&=
+		\lim_{r\to \infty}
+		\frac%
+		{r  (\pi/2)^{-r-1} \int_0^{\pi/2} x^r \sin x\,dx}%
+		{r^2(\pi/2)^{-r-1} \int_0^{\pi/2} x^r \cos x\,dx}\\
+		&=
+		\frac%
+		{\lim_{r\to \infty}r  (\pi/2)^{-r-1} \int_0^{\pi/2} x^r \sin x\,dx}%
+		{\lim_{r\to \infty}r^2(\pi/2)^{-r-1} \int_0^{\pi/2} x^r \cos x\,dx}
+		= \frac{2}{\pi}
+	\end{align*}
+\end{sol}

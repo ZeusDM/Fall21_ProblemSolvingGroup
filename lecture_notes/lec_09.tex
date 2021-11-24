@@ -1,0 +1,87 @@
+\lecture{9}{2021-11-10}{}
+
+\begin{prob}{Putnam 2014, B2}{}
+        Suppose that $f$ is a function on the interval $[1,3]$ such that $-1\le f(x)\le 1$ for all $x$ and $\displaystyle \int_1^3f(x)\,dx=0.$ How large can $\displaystyle\int_1^3\frac{f(x)}x\,dx$ be?
+\end{prob}
+
+\begin{sol}{}{}
+	The answer is \(\boxed{\log\frac{3}{4}.}\)
+
+	Let \(f^\star\colon [1, 3] \to [-1, 1]\) be defined as follows \[
+		f^\star(x) =
+		\begin{cases}
+			1 & 1 \leq x \leq 2 \\
+			-1 & 2 < x \leq 3.
+		\end{cases}
+	\]
+
+	Let \(f\colon [1, 3] \to [-1, 1]\) be any function such that \(\displaystyle \int_1^3f(x)\,dx=0\). Then, 
+	\begin{align*}
+		\int_1^3\frac{f(x)}{x}\,dx - \int_1^3\frac{f^\star(x)}{x}\,dx 
+		&= \int_1^3 \frac{f(x) - f^\star(x)}{x}\,dx \\
+		&= \int_1^2 \frac{f(x) - 1}{x}\,dx + \int_2^3 \frac{f(x) + 1}{x}\,dx \\
+		&\leq \int_1^2 \frac{f(x) - 1}{2}\,dx + \int_2^3 \frac{f(x) + 1}{2}\,dx \\
+		&= \int_1^3 \frac{f(x)}{2}\,dx = 0.
+	\end{align*}
+	In other words, \[
+		\int_1^3\frac{f(x)}{x}\,dx \leq \int_1^3\frac{f^\star(x)}{x}\,dx.
+	\]
+
+	Thus, the answer to the problem is \[
+		\int_1^3\frac{f^\star(x)}{x}\,dx = \int_1^2 \frac{1}{x} - \int_2^3\frac{1}{x} = \log\frac{3}{4}.
+	\]
+\end{sol}
+
+\begin{prob}{IMO 1995, 6}{}
+	Let $p$ be an odd prime number. Determine how many $p$-element subsets $A$ of $ \{1,2,\dots,2p\}$ are such that the sum of elements of \(A\) is divisible by $p$.
+\end{prob}
+
+\begin{sol}{}{}
+	The answer is \[
+		\frac{\binom{2p}{p} - 2}{p} + 2.
+	\]
+
+	Let \(\mathcal S\) denote the collection of all subsets of \(\{1, \dots, 2p\}\) with \(p\) elements. Let's interpret this sets of this collection by assigning \(0\)'s and \(1\)'s in a \(2 \times p\) matrix. For example, if \(p = 5\) and \(S = \{1, 2, 4, 6, 10\} \in \mathcal S\), we will visualize \(S\) as the matrix \[
+		\begin{pmatrix}
+			1 & 1 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1
+		\end{pmatrix}.
+	\]
+
+	Now, for each matrix with the first row consisting of not all zeros or not all ones, we will group it with the cyclical permutations of the first row.
+	
+	For example, the matrix above will form the following group of matrices:
+	\[
+		\begin{pmatrix}
+			1 & 1 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1
+		\end{pmatrix},
+		\begin{pmatrix}
+			0 & 1 & 1 & 0 & 1 \\ 1 & 0 & 0 & 0 & 1
+		\end{pmatrix},
+		\begin{pmatrix}
+			1 & 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1
+		\end{pmatrix},
+		\begin{pmatrix}
+			0 & 1 & 0 & 1 & 1 \\ 1 & 0 & 0 & 0 & 1
+		\end{pmatrix},
+		\begin{pmatrix}
+			1 & 0 & 1 & 0 & 1 \\ 1 & 0 & 0 & 0 & 1
+		\end{pmatrix}.
+	\]
+	Note that, in this example, the sums of the corresponding sets are, in modulo \(5\), respectively, \[
+		3, 1, 4, 2, 0.
+	\]
+
+	Unless the first row is entirely made up of zeros or entirely made up of ones, since \(p\) is prime, we have that this will generate a group with \(p\) matrices. Furthermore, when going from one to another, the sum of the corresponding sets increases by the amount of ones in the first line. This implies that, in each group, there will be exactly one set with the desired property.
+
+	Accounting for the matrices \[
+		\begin{pmatrix}
+			1 & 1 & \dots & 1 \\ 0 & 0 & \dots & 0
+		\end{pmatrix}\text{, and } 
+		\begin{pmatrix}
+			0 & 0 & \dots & 0 \\ 1 & 1 & \dots & 1
+		\end{pmatrix}, 
+		\] that correspond to the sets \(\{1, \dots, p\}\) and \(\{p+1, \dots, 2p\}\), and have the desired property; we imply that the final answer is  \[
+			\frac{\binom{2p}{p} - 2}{p} + 2.
+		\]
+
+\end{sol}

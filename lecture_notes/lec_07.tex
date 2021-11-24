@@ -1,38 +1,11 @@
-\lecture{7}{2021-11-23}{}
-\begin{prob}{}{}
-	Find the $2000$\textsuperscript{th} digit in the square root of $N = 11\dots1$, where $N$ contains $1998$ digits, all of them $1$'s.
+\lecture{7}{2021-10-27}{}
+\begin{prob}{Putnam 2015, A2}{}
+	Given a list of the positive integers $1,2,3,4,\dots,$ take the first three numbers $1,2,3$ and their sum $6$ and cross all four numbers off the list. Repeat with the three smallest remaining numbers $4,5,7$ and their sum $16.$ Continue in this way, crossing off the three smallest remaining numbers and their sum and consider the sequence of sums produced: $6,16,27, 36, \dots.$ Prove or disprove that there is some number in this sequence whose base 10 representation ends with $2015.$
 \end{prob}
 
-\begin{sol}{}{}
-	The answer is \boxed{6.}
-	We can estimate \[
-		\sqrt{\frac{10^{1998} - 1}{9}} \approx \sqrt{\frac{10^{1998}}{9}} = \frac{10^{999}}{3}.
-	\]
-	How good is this estimate?
-	\begin{align*}
-		\left(\frac{10^{999}}{3} - \sqrt{\frac{10^{1998} - 1}{9}}\right)
-		\left(\frac{10^{999}}{3} + \sqrt{\frac{10^{1998} - 1}{9}}\right) &=
-		\frac{10^{1998}}{9} - \frac{10^{1998}-1}{9} \\
-		&= \frac{1}{9},
-	\end{align*}
-	thus, by using the estimative $\sqrt{\frac{10^{1998} - 1}{9}} \approx \frac{10^{999}}{3}$,
-	\begin{align*}
-		\frac{10^{999}}{3} - \sqrt{\frac{10^{1998} - 1}{9}} \approx \frac{1}{6 \cdot 10^{999}},
-	\end{align*}
-	which sadly implies that our estimative is not good enough to evaluate the \(2000\)\textsuperscript{th}. However, now we have a new estimative:
-	\[
-		\sqrt{\frac{10^{1998} - 1}{9}} \approx \frac{10^{999}}{3} - \frac{1}{6 \cdot 10^{999}}.
-	\]
-	Again, how good is this estimative?
-	\begin{align*}
-		\left(\sqrt{\tfrac{10^{1998} - 1}{9}} - \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right)\right)
-		\left(\sqrt{\tfrac{10^{1998} - 1}{9}} + \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right)\right)
-		&= 
-		\tfrac{10^{1998} - 1}{9} - \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right)^2 \\
-		&= \tfrac{1}{36 \cdot 10^{1998}},
-	\end{align*}
-	so we know that \[
-		\sqrt{\tfrac{10^{1998} - 1}{9}} - \left(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\right) < \frac{1}{10^{1010}},
-	\]
-	which is good enough to imply that the \(2000\)\textsuperscript{th} digit of \(\sqrt{\tfrac{10^{1998} - 1}{9}}\) is equal to the \(2000\)\textsuperscript{th} digit of \(\tfrac{10^{999}}{3} - \tfrac{1}{6 \cdot 10^{999}}\), which is \(6\).
-\end{sol}
+\begin{sk}{}{}
+	\textcolor{red}{The full solution is to be done.} The answer is yes. You can prove, using induction, that the \((k+1)\)-th term of the sequence will be \(10k + s_k\), with \(s_k \in \{5, 6, 7\}\). You will be able to recursevely evaluate in terms of \(s_q\), you write \(k = 3q + r\), \(0 \leq r < 3\).
+
+	With that, you will be able to find \(k\) such that \(k \equiv 201 \pmod 1000\) and \(s_k = 5\).
+\end{sk}
+
