@@ -1,0 +1,113 @@
+\lecture{12}{2021-12-01}{}
+
+\begin{prob}{Putnam 2010, A2}{}
+	Find all differentiable functions $f:\mathbb{R}\to\mathbb{R}$ such that
+	\[f'(x)=\frac{f(x+n)-f(x)}n\]
+	for all real numbers $x$ and all positive integers $n.$
+\end{prob}
+\begin{sol}{}{}
+	I claim that the only functions \(f\) that satisfy the requirements are \(f(x) = ax + b\), with real parameters \(a, b\).
+	It is easy to check that those functions indeed satisfy the requirements; both RHS and LHS are always \(a\).
+
+	Now, suppose \(f\) is a function that satisfies the requirements.
+	Let \(g(x) = f(x) - f(0) - xf'(0)\). Then, \(g'(x) = f'(x) - f'(0)\).
+
+	\begin{lem}{}{putnam2010:a2:lem1}
+	\[g'(x)=\frac{g(x+n)-g(x)}n\]
+	for all real numbers $x$ and all positive integers $n.$
+	\end{lem}
+	\begin{proof}
+	Note that
+	\begin{align*}
+		\frac{g(x + n) - g(n)}{n} &= \frac{f(x + n) - f(x) - nf'(0)}{n} \\
+								  &= \frac{f(x + n) - f(x)}{n} - f'(0) \\
+								  &= f'(x) - f'(0) \\
+								  &= g'(x),
+	\end{align*}
+	for all real numbers \(x\) and all positive integers \(n\).
+	\end{proof}
+
+	\begin{lem}{}{putnam2010:a2:lem2}
+		\[
+			g'(x) = g'(x+1)
+		\]
+		for all real numbers \(x\).
+	\end{lem}
+	\begin{proof}
+		Note that \[
+			g'(x) = \frac{g(x+2) - g(x)}{2}
+		\]
+		and \[
+			g'(x) = \frac{g(x+1) - g(x)}{1},
+		\]
+		therefore we have \[
+			g'(x) = \frac{(g(x + 2) - g(x)) - (g(x+1) - g(x))}{2 - 1} = \frac{g(x+2) - g(x+1)}{1} = g'(x+1).
+		\]
+	\end{proof}
+
+	Since \(g'(0) = 0\), Lemma 2 implies that \(g'(n) = 0\) for all integers \(n\). Then, with Lemma 1, we conclude that \(g(n) = g(0) = 0\) for all integers \(n\).
+
+	\begin{lem}{}{putnam2010:a2:lem3}
+		\[
+			g(x) = g(x+1)
+		\]
+		for all real numbers \(x\).
+	\end{lem}
+	\begin{proof}
+		\begin{align*}
+			g(x+1) - g(x) &= \int_x^{x+1} g(t)\,dt \\
+						  &=  \int_x^{\lfloor x \rfloor} g(t)\,dt + \int_{\lfloor x \rfloor}^{x+1} g(t)\,dt \\
+						  &=  \int_x^{\lfloor x \rfloor} g(t)\,dt + \int_{\lfloor x \rfloor - 1}^{x} g(t)\,dt & \text{by Lemma 2}\\
+						  &=  \int_{\lfloor x \rfloor - 1}^{\lfloor x \rfloor} g(t)\,dt\\
+						  &= g(\lfloor x\rfloor) - g(\lfloor x \rfloor - 1) = 0.
+		\end{align*}
+	\end{proof}
+
+	Finally, Lemma 1 with \(n = 1\), together with Lemma 3, imply that \[
+		g'(x) = 0
+	\] for all real numbers \(x\);
+	since \(g(0) = 0\), we have that \[
+		g(x) = 0
+	\]
+	for all real numbers \(x\), and consequently \[
+		f(x) = f'(0)x + f(0),
+	\] which is in the format we desired.
+	
+
+\end{sol}
+\begin{prob}{Putnam 2011, B1}{}
+	Let $h$ and $k$ be positive integers. Prove that for every $\varepsilon >0,$ there are positive integers $m$ and $n$ such that \[\varepsilon < \left|h\sqrt{m}-k\sqrt{n}\right|<2\varepsilon.\]
+\end{prob}
+\begin{sol}{}{}
+	\begin{lem}{}{}
+	Let $\epsilon >0$. There are positive integers $m_0$ and $n_0$ such that \[0 < \sqrt{m_0}-\sqrt{n_0} < \epsilon.\]
+	\end{lem}
+	\begin{proof}
+		Let \(m_0 = n_0 + 1\). Let \(n_0\) be large enough so that \(n_0 > \epsilon^{-2}\). Then, \[
+			0 < \sqrt{n_0 + 1} - \sqrt{n_0} = \frac{1}{\sqrt{n_0+1} + \sqrt{n_0}} < n_0^{-1/2} < \epsilon.
+		\]
+	\end{proof}
+	\begin{lem}{}{}
+	Let $\epsilon >0$. There are positive integers $m_1$ and $n_1$ such that \[\epsilon < \sqrt{m_1}-\sqrt{n_1} < 2\epsilon.\]
+	\end{lem}
+	\begin{proof}
+		Consider \(m_0\) and \(n_0\) from Lemma 1. Let \(\delta = \sqrt{m_0} - \sqrt{n_0}\). We know that \(0 < \delta < \epsilon\). Let  \(\ell = \left\lfloor\frac{\epsilon}{\delta}\right\rfloor + 1\). Then, we know that \[
+			\frac{\epsilon}{\delta} < \ell \leq \frac{\epsilon}{\delta} + 1,
+		\]
+		i.e.
+		\[
+			\epsilon < \ell \delta \leq \epsilon + \delta < 2\epsilon.
+		\]
+
+		Define \(m_1 = \ell^2 m_0\) and \(n_1 = \ell^2 n_0\). Then, \(\sqrt{m_1} - \sqrt{n_1} = \ell\delta\), which is between \(\epsilon\) and \(2\epsilon\), as desired.
+	\end{proof}
+	\begin{lem}{a.k.a., the problem}{}
+	Let $h$ and $k$ be positive integers. Let \(\varepsilon > 0\). There are positive integers $m$ and $n$ such that \[\varepsilon < h\sqrt{m}-k\sqrt{n}<2\varepsilon.\]
+	\end{lem}
+	\begin{proof}
+		Lemma 2 with \(\epsilon \mapsto \frac{\varepsilon}{hk}\) implies that there exist \(m_1\) and \(n_1\) such that \[
+			\frac{\varepsilon}{hk} < \sqrt{m_1} - \sqrt{n_1} < \frac{2\varepsilon}{hk}.
+		\]
+		Define \(m = k^2m_1\) and  \(n = h^2n_1\). Then, \( \varepsilon < h\sqrt{m} - k\sqrt{n} < 2\varepsilon\), as desired.
+	\end{proof}
+\end{sol}

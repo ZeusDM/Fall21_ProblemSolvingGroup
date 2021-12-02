@@ -1,0 +1,117 @@
+\documentclass{scrartcl}
+\KOMAoptions{
+    fontsize=12pt,
+    paper=letter,
+    paper=portrait,
+    parskip=half,
+    headings=big,
+    toc=listof,
+    twoside=false,
+	DIV=14,
+}
+
+\usepackage{amsmath, amsthm, amsfonts, graphicx, enumitem, hyperref}
+\usepackage{multicol}
+
+\pagestyle{empty}
+
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}
+
+\begin{document}
+\noindent\begin{minipage}{.5\textwidth}{}
+	\textsc{Haverford Problem Solving Group}
+
+	\textsc{December 1, 2021}
+\end{minipage}\hfill
+\begin{minipage}{.4\textwidth}{}
+	\ \hfill
+	\includegraphics[height = .9in]{psg_logo}
+\end{minipage}\\[.5em]
+\hrule
+
+\begin{minipage}{.85\textwidth}{}
+	\footnotesize
+	In order to prepare ourselves to work on fresh new problems this weekend (Putnam, Dec 4\textsuperscript{th}), here is a totally new set of problems. If you are interested in thinking about some problem in previous lists, you can access them in our Discord server. Scan this QR code to join.
+\end{minipage}
+\begin{minipage}{.15\textwidth}{}
+	\ \hfill \includegraphics[height = .8in]{qr}
+\end{minipage}
+
+\begin{multicols}{2}
+	\setcounter{prob}{19}
+	\begin{prob}%[Putnam 2011, A1]
+		Define a \textit{growing spiral} in the plane to be a sequence of points with integer coordinates $P_0=(0,0),P_1,\dots,P_n$ such that $n\ge 2$ and:
+
+		\begin{enumerate}[label = \textbullet, left = 0pt]
+			\item The directed line segments $P_0P_1$, $P_1P_2$, $\dots$, $P_{n-1}P_n$ are in successive coordinate directions east (for $P_0P_1$), north, west, south, east, etc.
+			\item The lengths of these line segments are positive and strictly increasing.
+		\end{enumerate}
+
+		\begin{center}
+		\vspace{-.5em}
+		\setlength{\unitlength}{.14mm}	
+		\begin{picture}(200,180)
+
+		\put(20,100){\line(1,0){160}}
+		\put(100,10){\line(0,1){170}}
+
+		%\put(0,97){\footnotesize West}
+		%\put(180,97){\footnotesize East}
+		%\put(90,0){\footnotesize South}
+		%\put(90,180){\footnotesize North}
+
+		\put(100,100){\circle{1}}\put(100,100){\circle{2}}\put(100,100){\circle{3}}
+		\put(115,100){\circle{1}}\put(115,100){\circle{2}}\put(115,100){\circle{3}}
+		\put(115,130){\circle{1}}\put(115,130){\circle{2}}\put(115,130){\circle{3}}
+		\put(40,130){\circle{1}}\put(40,130){\circle{2}}\put(40,130){\circle{3}}
+		\put(40,20){\circle{1}}\put(40,20){\circle{2}}\put(40,20){\circle{3}}
+		\put(170,20){\circle{1}}\put(170,20){\circle{2}}\put(170,20){\circle{3}}
+
+		\multiput(100,99.5)(0,.5){3}{\line(1,0){15}}
+		\multiput(114.5,100)(.5,0){3}{\line(0,1){30}}
+		\multiput(40,129.5)(0,.5){3}{\line(1,0){75}}
+		\multiput(39.5,20)(.5,0){3}{\line(0,1){110}}
+		\multiput(40,19.5)(0,.5){3}{\line(1,0){130}}
+
+		%\put(102,90){\footnotesize P0}
+		%\put(117,90){\footnotesize P1}
+		%\put(117,132){\footnotesize P2}
+		%\put(28,132){\footnotesize P3}
+		%\put(0,10){\footnotesize P4}
+		%\put(172,10){\footnotesize P5}
+		\end{picture}
+		\end{center}
+		How many of the points $(x,y)$ with integer coordinates $0\le x\le 2011,0\le y\le 2011$ \textit{cannot} be the last point, $P_n,$ of any growing spiral?
+	\end{prob}
+	\begin{prob}%[Putnam 2011, A2]
+		Let $a_1,a_2,\dots$ and $b_1,b_2,\dots$ be sequences of positive real numbers such that $a_1=b_1=1$ and $b_n=b_{n-1}a_n-2$ for $n=2,3,\dots.$ Assume that the sequence $(b_j)$ is bounded. Prove that \[S=\sum_{n=1}^{\infty}\frac1{a_1\cdots a_n}\] converges, and evaluate $S.$
+	\end{prob}
+	\vfill\null\columnbreak
+	\begin{prob}%[Putnam 2010, A2]
+		Find all differentiable functions $f:\mathbb{R}\to\mathbb{R}$ such that
+		\[f'(x)=\frac{f(x+n)-f(x)}n\]
+		for all real numbers $x$ and all positive integers $n.$
+	\end{prob}
+	\begin{prob}%[Putnam 2011, B1]
+		Let $h$ and $k$ be positive integers. Prove that for every $\varepsilon >0,$ there are positive integers $m$ and $n$ such that \[\varepsilon < \left|h\sqrt{m}-k\sqrt{n}\right|<2\varepsilon.\]
+	\end{prob}
+	\begin{prob}%[Putnam 2012, B1]
+		Let $S$ be a class of functions from $[0,\infty)$ to $[0,\infty)$ that satisfies:
+		\begin{enumerate}[label = \textbullet, left = 0pt]
+			\item The functions $f_1(x)=e^x-1$ and $f_2(x)=\ln(x+1)$ are in $S;$
+			\item If $f(x)$ and $g(x)$ are in $S,$ the functions $f(x)+g(x)$ and $f(g(x))$ are in $S;$
+			\item If $f(x)$ and $g(x)$ are in $S$ and $f(x)\ge g(x)$ for all $x\ge 0,$ then the function $f(x)-g(x)$ is in $S.$
+		\end{enumerate}
+		Prove that if $f(x)$ and $g(x)$ are in $S,$ then the function $f(x)g(x)$ is also in $S.$
+	\end{prob}
+	\begin{prob}%[Putnam 2012, B2]
+		Let $P$ be a given (non-degenerate) polyhedron.
+		Prove that there is a constant $c(P)>0$ with the following property:
+		\begin{quote}
+			If a collection of $n$ balls whose volumes sum to $V$ contains the entire surface of $P,$ then $n>c(P)/V^2.$
+		\end{quote}
+	\end{prob}
+	\vfill\null
+\end{multicols}
+\end{document}
