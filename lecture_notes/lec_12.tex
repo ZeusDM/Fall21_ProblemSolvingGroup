@@ -111,3 +111,95 @@
 		Define \(m = k^2m_1\) and  \(n = h^2n_1\). Then, \( \varepsilon < h\sqrt{m} - k\sqrt{n} < 2\varepsilon\), as desired.
 	\end{proof}
 \end{sol}
+
+\begin{prob}{Putnam 2012, B1}{}
+	Let $S$ be a class of functions from $[0,\infty)$ to $[0,\infty)$ that satisfies:
+	\begin{enumerate}[label = (\roman*), left = 0pt]
+		\item The functions $f_1(x)=e^x-1$ and $f_2(x)=\ln(x+1)$ are in $S;$
+		\item If $f(x)$ and $g(x)$ are in $S,$ the functions $f(x)+g(x)$ and $f(g(x))$ are in $S;$
+		\item If $f(x)$ and $g(x)$ are in $S$ and $f(x)\ge g(x)$ for all $x\ge 0,$ then the function $f(x)-g(x)$ is in $S.$
+	\end{enumerate}
+	Prove that if $f(x)$ and $g(x)$ are in $S,$ then the function $f(x)g(x)$ is also in $S.$
+\end{prob}
+\begin{sol}{}{}
+	Suppose \(f(x)\) anf \(g(x)\) are in \(S\).
+
+	Then, by (i) and (ii), \[
+		\ln(f(x)g(x) + f(x) + g(x) + 1) = 
+		\ln(f(x) + 1) + \ln(g(x) + 1) \in S.
+	\]
+
+	Then, by (i) and (ii), \[
+		f(x)g(x) + f(x) + g(x) = e^{\ln(f(x)g(x) + f(x) + g(x) + 1)} - 1 \in S.
+	\]
+
+	Also, by (ii), \(f(x) + g(x) \in S\). Note that \[
+		f(x)g(x) + f(x) + g(x) \geq f(x) + g(x)
+	\] for all \(x\). Therefore, by (iii), the function \[
+	\left(f(x)g(x) + f(x) + g(x)\right) - \left(f(x) + g(x)\right) = f(x)g(x)
+	\] is in \(S\), as desired.
+\end{sol}
+
+\newpage
+\begin{prob}{Putnam 2011, A1}{}
+	Define a \textit{growing spiral} in the plane to be a sequence of points with integer coordinates $P_0=(0,0),P_1,\dots,P_n$ such that $n\ge 2$ and:
+
+	\begin{enumerate}[label = \textbullet, left = 0pt]
+		\item The directed line segments $P_0P_1$, $P_1P_2$, $\dots$, $P_{n-1}P_n$ are in successive coordinate directions east (for $P_0P_1$), north, west, south, east, etc.
+		\item The lengths of these line segments are positive and strictly increasing.
+	\end{enumerate}
+
+	\begin{center}
+	\vspace{-.5em}
+	\setlength{\unitlength}{.4mm}	
+	\begin{picture}(200,182)
+
+	\put(20,100){\line(1,0){160}}
+	\put(100,10){\line(0,1){170}}
+
+	\put(0,97){\footnotesize West}
+	\put(180,97){\footnotesize East}
+	\put(90,0){\footnotesize South}
+	\put(90,182){\footnotesize North}
+
+	\put(100,100){\circle{1}}\put(100,100){\circle{2}}\put(100,100){\circle{3}}
+	\put(115,100){\circle{1}}\put(115,100){\circle{2}}\put(115,100){\circle{3}}
+	\put(115,130){\circle{1}}\put(115,130){\circle{2}}\put(115,130){\circle{3}}
+	\put(40,130){\circle{1}}\put(40,130){\circle{2}}\put(40,130){\circle{3}}
+	\put(40,20){\circle{1}}\put(40,20){\circle{2}}\put(40,20){\circle{3}}
+	\put(170,20){\circle{1}}\put(170,20){\circle{2}}\put(170,20){\circle{3}}
+
+	\multiput(100,99.5)(0,.5){3}{\line(1,0){15}}
+	\multiput(114.5,100)(.5,0){3}{\line(0,1){30}}
+	\multiput(40,129.5)(0,.5){3}{\line(1,0){75}}
+	\multiput(39.5,20)(.5,0){3}{\line(0,1){110}}
+	\multiput(40,19.5)(0,.5){3}{\line(1,0){130}}
+
+	\put(102,90){\footnotesize \(P_0\)}
+	\put(117,90){\footnotesize \(P_1\)}
+	\put(117,132){\footnotesize \(P_2\)}
+	\put(28,132){\footnotesize \(P_3\)}
+	\put(28,10){\footnotesize \(P_4\)}
+	\put(172,10){\footnotesize \(P_5\)}
+	\end{picture}
+	\end{center}
+	How many of the points $(x,y)$ with integer coordinates $0\le x\le 2011,0\le y\le 2011$ \textit{cannot} be the last point, $P_n,$ of any growing spiral?
+\end{prob}
+\begin{sol}{UNFINISHED SOLUTION}{}
+	If a growing spiral has \(n = 2\), say it first moves \(a_1\) units east and then \(a_2\) units north; with necessarily \(0 < a_1 < a_2\). Then, the last point \(P_2\) will be \((a_1, a_2)\). In other words, the set of possible last points for a growing spiral with \(n=2\) is \[
+		\{(x, y) : 0 < x < y\}.
+	\]
+
+	If a growing spiral has \(n = 3\), say it moves \(a_1\) units east, then \(a_2\) units north, then \(a_3\) units west; with necessarily \(0 < a_1 < a_2 < a_3\).
+	Then, the last point \(P_3\) will be \((a_1 - a_3, a_2)\).
+	Since \(a_1, a_2, a_3\) are integers, the inequalities imply that  \(a_1 - a_3 \leq -2\) and  \(a_2 \geq 2\); so the last point \(P_3\) must be in the set \(\{(x, y) : x \leq -2, y \geq 2\}\).
+	Note that, by setting \(a_1 = y - 1 < a_2 = y < a_3 = y - 1 + (-x)\), we obtain any point in such set.
+	In other words, the set of possible last points for a growing spiral with \(n = 3\) is \[
+		\{(x, y) : x \leq -2, y \geq 2\}.
+	\]
+
+	By similar arguments, the set of possible last points for a growing spiral with \(n = 4\) is \[
+		\{(x, y) : x \leq -2, y \leq -2\},
+	\]
+	and the set of possible last points for a growing spiral with \(n = 5\) is 
+\end{sol}
